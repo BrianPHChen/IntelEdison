@@ -1,6 +1,10 @@
 import mraa
 
 print (mraa.getVersion())
-x = mraa.Gpio(13)
-x.dir(mraa.DIR_OUT)
-x.write(1)
+
+try:
+    x = mraa.Aio(0)
+    print (x.read())
+    print ("%.5f" % x.readFloat())
+except:
+    print ("Are you sure you have an ADC?")
